@@ -1,6 +1,6 @@
 hbase-thrift-performance-test
 =============================
-10 concurrent threads write 60MB data to HBase
+10 concurrent threads write 60MB data to HBase by thrift
 
 **Detail:**   
 http://blog.thisisfeifan.com/2012/06/hbase-thrift-performance-test.html
