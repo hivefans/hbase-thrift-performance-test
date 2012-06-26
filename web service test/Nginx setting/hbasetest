@@ -1,0 +1,29 @@
+upstream backends{
+                 server 127.0.0.1:8870;
+                 server 127.0.0.1:8871;
+                 server 127.0.0.1:8872;
+                 server 127.0.0.1:8873;
+                 server 127.0.0.1:8874;
+                 server 127.0.0.1:8875;
+                 server 127.0.0.1:8876;
+                 server 127.0.0.1:8877;
+            }
+
+
+server {
+  listen 8880;
+  server_name localhost;
+
+
+
+  location / {
+  proxy_pass_header Server;
+  proxy_set_header Host $http_host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Scheme $scheme;
+  proxy_pass http://backends;
+  proxy_next_upstream error;
+   }
+  access_log /var/log/nginx/hbasewstest.access_log;
+  error_log /var/log/nginx/hbasewstest.error_log;
+ }
